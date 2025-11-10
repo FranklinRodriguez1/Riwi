@@ -17,17 +17,51 @@
 # else:
 #     print(f"el numero {numeroPosNeg} es negativo")
 #     # validar si el numero es par o impar. 
-numeroParOImpar = int(input("ingresa un numero para validar si es par o impar"))
-if numeroParOImpar % 2 == 0:
-    print("el numero ingreso es par")    
-else:
-    print("el numero ingresado es impar")
+# numeroParOImpar = int(input("ingresa un numero para validar si es par o impar "))
+# if numeroParOImpar % 2 == 0:
+#     print("el numero ingreso es par")    
+# else:
+#     print("el numero ingresado es impar")
 
 
-    # Calculadora básica con +, -, *, /.   
-print("---------------------Calculadora Basica---------------------")
-input("ingresa primer valor para la oper")
-    # Clasificador de notas (Excelente, Aprobado, Reprobado).
-    # Comparador de tres números: mayor y menor.
+#     # Calculadora básica con +, -, *, /.   
+# print("---------------------Calculadora Basica---------------------")
+# valor1 = int(input("ingresa primer valor => "))
+# valor2 = int(input("ingresa segundo valor => ")) 
 
+# operacion = input("¿que operacion desea realizar ( +, -, *, /)?") 
+# while True:
+#     if operacion == "+":
+#         result = valor1 + valor2 
+#         print(f"el resultado de la operacion es de {result}") 
+
+#     elif operacion == "-":
+#         result = valor1 - valor2  
+#         print(f"el resultado de la operacion es de {result}")  
+#     elif operacion == "*":
+#         result = valor1 * valor2 
+#         print(f"el resultado de la operacion es de {result}")  
+#     elif operacion == "/":
+#         result = valor1 / valor2 
+#         print(f"el resultado de la operacion es de {result}")  
+#     else:
+#         print("debes elegir una operacion valida intenta de nuevo")
+#         break 
+
+#     # Clasificador de notas (Excelente, Aprobado, Reprobado). 
+# nota = int(input("ingresa tus notas a clasificar (1 - 5)")) 
+# if nota == 5: 
+#     print("Felicidades eres excelente") 
+# elif nota == 3:
+#     print("Felicidades estas aprobado")
+# else:
+#     print("Estas reprobado")
+    # Comparador de tres números: mayor y menor. 
+print("bienvenido al comparador de numeros")
+comparar1 = int(input("ingresa primer numero a comparar => "))
+comparar2 = int(input("ingresa segundo numero a comparar => "))
+comparar3 = int(input("ingresa tercer numero a comparar => ")) 
+numerosOrdenado =[comparar1, comparar2, comparar3]    
+numerosOrdenado.sort(reverse=True)
+print(f"{numerosOrdenado[0]} es mayor que {numerosOrdenado[1]} y a su vez este mismo es mayor que {numerosOrdenado[2]}")
 
