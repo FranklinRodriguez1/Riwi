@@ -4,7 +4,8 @@
 frutas = ["manzana", "banana", "cereza"]
 print("Frutas iniciales:", frutas)
 #     Agregar y eliminar frutas. 
-frutas.append(input("Ingresa una fruta para agregar: "))
+frutas.append(input("Ingresa una fruta para agregar: ")) 
+
 #     Buscar un elemento en la lista. 
 frutaABuscar = input("ingresa una fruta para buscar=> ")
 #     Lista de números y promedio.  
@@ -17,4 +18,7 @@ for i in range(1, 21):
     if i % 2 == 0:
         numeros_pares.append(i)
 #     Eliminar duplicados.
-listaConDuplicados = [1, 2, 2, 3, 4, 4, 5]
+listaConDuplicados = [5, 6, 70, 5, 3, 1, 2, 8, 9, 9, 9, 8, ] 
+sinDuplicados =list(set(listaConDuplicados))
+ordenado = sorted(sinDuplicados, reverse=True)
+print(ordenado)
