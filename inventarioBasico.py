@@ -36,7 +36,9 @@ while True:
         break
     except ValueError: #se maneja el error al inscribir un error en el programa
             print("Valor invalido ingresa el dato solicitado de manera correcta")
- 
+  
+
+#   es un programa basico que sirve para registrar productos comprados y valida cuando es el gasto que se hace basandose en la cantidad
 
 
 
