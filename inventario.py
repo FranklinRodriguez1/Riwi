@@ -45,5 +45,6 @@ def inventario ():   #funcion para lanzar el programa
         except ValueError:#en caso de elegir una opcion erronea se maneja el error de eleccion con el except
             print("ingresa una opcion valida")    
 
-inventario() 
+inventario() #se llama la funcion para ejecutar el programa 
+# es un programa mas avanzado que sirve para registrar productos comprados, mostrar el inventario y calcular estadisticas del inventario
 
