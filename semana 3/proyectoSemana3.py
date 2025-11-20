@@ -33,12 +33,18 @@ while True:
                 agregarProductos(inventario, nombre, precio, cantidad) 
             except ValueError:
                 print("Error: Precio y cantidad deben ser numéricos.")
-        elif opcion == '2':
-            mostrarInventario(inventario)
+        elif opcion == '2': 
+            if inventario == []:
+                print("el inventario esta vacio") 
+            else:
+                mostrarInventario(inventario)
         elif opcion == '3': 
-            try:
-                nombre = input("Nombre del producto a buscar: ") 
-                buscarProducto(inventario, nombre)
+            try: 
+                if inventario == []: 
+                    print("el inventario esta vacio") 
+                else:
+                    nombreABuscar = input("Nombre del producto a buscar: ") 
+                    buscarProducto(inventario, nombreABuscar)
             except ValueError:
                 print("Error: Entrada inválida.")
         elif opcion == '4':

@@ -1,0 +1,1 @@
+print("el inventario esta vacio")

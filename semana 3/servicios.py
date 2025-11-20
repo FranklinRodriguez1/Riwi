@@ -2,7 +2,7 @@
 import time
 from os import system
 
-def spiner():  
+def spiner():   
     system("clear")
     aviso = "cargando..."
     print(aviso)  
@@ -25,23 +25,26 @@ def spiner():
 
 def agregarProductos (inventario, nombre, precio, cantidad):
     spiner() # llama a la funcion spiner para que muestre la animacion de carga
-    producto ={"nombre":str(nombre).lower(), "precio": int(precio), "cantidad": int(cantidad)}
+    producto ={
+        "nombre":str(nombre).lower(), 
+        "precio": int(precio), 
+        "cantidad": int(cantidad)}
     inventario.append(producto) 
     print(f"el producto {nombre} ha sido agregado al inventario")
 
 def mostrarInventario(inventario):  
     spiner() # llama a la funcion spiner para que muestre la animacion de carga
-    print(f"en el inventario se encuentran los siguientes productos \n"\
-          "\n" \
-          f"{inventario}")
+    for element in inventario:
+        print(f"nombre: {element["nombre"]} precio: {element["precio"]} cantidad: {element["cantidad"]} ")
 # sirve para buscar un producto en el inventario 
 
-def buscarProducto(inventario, nombre): 
-    for producto in inventario:
-        if producto["nombre"] == nombre.lower():
-            print(f"el producto {nombre} ha sido encontrado en el inventario")
-            print(f" el producto {nombre} no se encuentra en el inventario y esta en la posicion {inventario.index(producto)} del inventario {producto}")
-            return
+def buscarProducto(inventario, nombre):   
+        nombre = nombre.lower()
+        for producto in inventario:   
+            if producto["nombre"].lower() == nombre:
+                print(producto)   
+                return
+        print("producto no encontrado")
 # sirve para actualizar un producto en el inventario
 
 def actualizarProducto(inventario, nombre): 
