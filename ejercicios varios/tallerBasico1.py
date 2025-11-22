@@ -7,7 +7,6 @@
 
 # input(f"hola {nombre}, ahora se que tienes {edad}") 
 # # Suma de dos números.  
-# print(45856 + 5584563) 
 # # Área del triángulo. 
 # baseTriangulo = 6 
 # alturaDelTriangulo = 15 

@@ -38,7 +38,7 @@ while True:
                 print("el inventario esta vacio") 
             else:
                 mostrarInventario(inventario)
-        elif opcion == '3': 
+        elif opcion == '3':  #opcion para buscar un producto en el inventario
             try: 
                 if inventario == []: 
                     print("el inventario esta vacio") 
@@ -46,16 +46,16 @@ while True:
                     nombreABuscar = input("Nombre del producto a buscar: ") 
                     buscarProducto(inventario, nombreABuscar)
             except ValueError:
-                print("Error: Entrada inválida.")
-        elif opcion == '4':
-            nombre = input("Nombre del producto a actualizar: ")
-            nuevo_precio = input("Nuevo precio (dejar vacío para no cambiar): ")
-            nueva_cantidad = input("Nueva cantidad (dejar vacío para no cambiar): ")
-            actualizarProducto(inventario, nombre, nuevo_precio or None, nueva_cantidad or None)
-        elif opcion == '5':
+                print("Error: Entrada inválida.") 
+
+        elif opcion == '4': #opcion para actualizar un producto en el inventario 
+            actualizarProducto( input("Nombre del producto a actualizar: "), inventario)
+
+
+        elif opcion == '5':#opcion para eliminar un producto del inventario
             nombre = input("Nombre del producto a eliminar: ")
             eliminarProducto(inventario, nombre)
-        elif opcion == '6':
+        elif opcion == '6': #opcion para calcular las estadisticas del inventario
             calcularEstadisticas(inventario)
         elif opcion == '7':
             print("Saliendo del programa.")

@@ -37,18 +37,22 @@ def mostrarInventario(inventario):
     for element in inventario:
         print(f"nombre: {element["nombre"]} precio: {element["precio"]} cantidad: {element["cantidad"]} ")
 # sirve para buscar un producto en el inventario 
-
-def buscarProducto(inventario, nombre):   
-        nombre = nombre.lower()
-        for producto in inventario:   
-            if producto["nombre"].lower() == nombre:
-                print(producto)   
+def buscarProducto(inventario, nombreABuscar):     
+        for producto in inventario: 
+            if producto["nombre"].lower() == nombreABuscar.lower(): 
+                print(f"producto encontrado: nombre: {producto['nombre']} precio: {producto['precio']} cantidad: {producto['cantidad']}")
                 return
         print("producto no encontrado")
 # sirve para actualizar un producto en el inventario
 
-def actualizarProducto(inventario, nombre): 
-    print("actualizando producto")  
+def actualizarProducto( nombre, inventario):
+     for producto in inventario: 
+            if producto["nombre"].lower() == nombre.lower(): 
+                print(f"producto encontrado: nombre: {producto['nombre']} precio: {producto['precio']} cantidad: {producto['cantidad']}") 
+                producto["precio":int(input("ingresa el nuevo precio")), "cantidad":int(input("ingresa la nueva cantidad"))] 
+            else:
+                print("producto no encontrado")
+                return
 
 # sirve para eliminar un producto del inventario
 def eliminarProducto(inventario, nombre):
