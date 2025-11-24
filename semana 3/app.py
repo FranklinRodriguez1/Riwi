@@ -1,4 +1,4 @@
-from servicios import agregarProductos, mostrarInventario, buscarProducto, actualizarProducto, eliminarProducto, calcularEstadisticas, spiner
+from servicios import agregarProductos, mostrarInventario, buscarProducto, actualizarProducto, eliminarProducto, calcularEstadisticas, guardarCSV, cargarCSV
     # Mantén un inventario en memoria como lista de diccionarios, donde cada producto tenga:
     #     {"nombre": str, "precio": float, "cantidad": int}
     # Crea un archivo principal app.py y un módulo servicios.py (o nombres equivalentes) con funciones:
@@ -19,8 +19,10 @@ while True:
     print("3. Buscar Producto")
     print("4. Actualizar Producto")
     print("5. Eliminar Producto")
-    print("6. Calcular Estadísticas")
-    print("7. Salir")
+    print("6. Calcular Estadísticas") 
+    print("7. Guardar SCV")
+    print("8. Cargar SCV") 
+    print("9. Salir")
 
     opcion = input("Seleccione una opción (1-7): ")
     try:
@@ -62,7 +64,15 @@ while True:
                 eliminarProducto(inventario, nombre)
         elif opcion == '6': #opcion para calcular las estadisticas del inventario
             calcularEstadisticas(inventario)
-        elif opcion == '7':
+        elif opcion == '7': 
+            ruta =input("ingresa el nombre del archivo donde quieres guardar el inventario (con .csv al final): ")
+            guardarCSV(ruta, inventario)
+        elif opcion == '8': 
+            ruta =input("ingresa el nombre del archivo desde donde quieres cargar el inventario (con .csv al final): ")
+            inventario = cargarCSV(ruta, inventario)
+        
+        
+        elif opcion == '9':
             print("Saliendo del programa.")
             break
     except ValueError:

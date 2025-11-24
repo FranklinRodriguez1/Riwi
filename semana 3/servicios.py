@@ -2,7 +2,7 @@
 import time
 from os import system 
 from os import name
-
+import csv
 # def spiner():   
 #     system("clear")
 #     aviso = "cargando..."
@@ -94,5 +94,114 @@ def calcularEstadisticas(inventario):
             banco_total += int(producto["precio"]) * int(producto["cantidad"])
             spiner() 
             print(f"el inventario tiene {len(inventario)} elementos y el valor total es de: {banco_total}")
-            
+
+
+
+# ----------------------------
+# GUARDAR INVENTARIO EN CSV
+# ----------------------------
+def guardarCSV(ruta, inventario):
+    if not inventario:
+        print("El inventario está vacío, no hay nada para guardar.")
+        return
+    try:
+        with open(ruta, "w", newline="", encoding="utf-8") as archivo:
+            escritor = csv.writer(archivo)
+            escritor.writerow(["nombre", "precio", "cantidad"])  # encabezado
+
+            for producto in inventario:
+                escritor.writerow([
+                    producto["nombre"],
+                    producto["precio"],
+                    producto["cantidad"]
+                ])
+
+        spiner()
+        print(f"Inventario guardado correctamente en {ruta}")
+
+    except Exception as e:
+        print(f"Ocurrió un error al guardar el archivo: {e}")
+
+
+# ----------------------------
+# CARGAR INVENTARIO DESDE CSV
+# ----------------------------
+def cargarCSV(ruta, inventario):
+    productos_cargados = []
+    filas_invalidas = 0
+
+    try:
+        with open(ruta, "r", encoding="utf-8") as archivo:
+            lector = csv.reader(archivo)
+            encabezado = next(lector, None) #esto obtiene la primera fila del archivo
+
+            # Validar encabezado obligatorio
+            if encabezado != ["nombre", "precio", "cantidad"]:
+                print("Error: El encabezado del CSV es inválido.")
+                return inventario
+
+            # Procesar filas
+            for fila in lector:
+                if len(fila) != 3:
+                    filas_invalidas += 1
+                    continue
+
+                nombre, precio, cantidad = fila
+                
+                try:
+                    precio = float(precio)
+                    cantidad = int(cantidad)
+
+                    if precio < 0 or cantidad < 0:
+                        raise ValueError
+
+                    productos_cargados.append({
+                        "nombre": nombre.lower(),
+                        "precio": precio,
+                        "cantidad": cantidad
+                    })
+
+                except ValueError:
+                    filas_invalidas += 1
+
+    except FileNotFoundError:
+        print("Error: archivo no encontrado.")
+        return inventario
+    except UnicodeDecodeError:
+        print("Error: problema con la codificación del archivo.")
+        return inventario
+    except Exception as e:
+        print(f"Error inesperado: {e}")
+        return inventario
+
+    # Decidir acción con el inventario
+    print("\nArchivo leído correctamente.")
+    print(f"Productos válidos encontrados: {len(productos_cargados)}")
+    print(f"Filas inválidas omitidas: {filas_invalidas}")
+
+    opcion = input("¿Sobrescribir inventario actual? (S/N): ").strip().upper()
+
+    if opcion == "S":
+        inventario = productos_cargados
+        accion = "Sobrescritura"
+    else:
+        accion = "Fusión"
+        for nuevo in productos_cargados:
+            existe = False
+            for actual in inventario:
+                if actual["nombre"] == nuevo["nombre"]:
+                    actual["cantidad"] += nuevo["cantidad"]  
+                    actual["precio"] = nuevo["precio"]        
+                    existe = True
+                    break
+            if not existe:
+                inventario.append(nuevo)
+
+    spiner()
+    print("\nResumen de carga:")
+    print(f"Productos cargados: {len(productos_cargados)}")
+    print(f"Filas inválidas: {filas_invalidas}")
+    print(f"Acción realizada: {accion}")
+
+    return inventario
 
