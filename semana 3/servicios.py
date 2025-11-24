@@ -97,9 +97,7 @@ def calcularEstadisticas(inventario):
 
 
 
-# ----------------------------
-# GUARDAR INVENTARIO EN CSV
-# ----------------------------
+
 def guardarCSV(ruta, inventario):
     if not inventario:
         print("El inventario está vacío, no hay nada para guardar.")
@@ -123,9 +121,6 @@ def guardarCSV(ruta, inventario):
         print(f"Ocurrió un error al guardar el archivo: {e}")
 
 
-# ----------------------------
-# CARGAR INVENTARIO DESDE CSV
-# ----------------------------
 def cargarCSV(ruta, inventario):
     productos_cargados = []
     filas_invalidas = 0
